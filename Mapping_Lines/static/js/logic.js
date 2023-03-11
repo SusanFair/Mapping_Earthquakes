@@ -63,7 +63,8 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
     //id: 'mapbox/streets-v11',
     // Dark background
     // id: 'mapbox/dark-v10',
-    id: 'mapbox/satellite-streets-v11',
+    // Satelite background
+    id: 'mapbox/satellite-streets-v12',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: API_KEY
@@ -71,4 +72,7 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
 
+
+
+//mapbox/satellite-streets-v11
 //https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/1/1/0?access_token=pk.eyJ1Ijoic2ZhaXItYW5hbHl0aWNzIiwiYSI6ImNsZXgyYjF0NDBoNWIzcG16aXRpcTNvN2cifQ.SHSYTI53_NqoPBHznn0dVw
