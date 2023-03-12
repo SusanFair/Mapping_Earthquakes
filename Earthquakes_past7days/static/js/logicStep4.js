@@ -172,6 +172,7 @@ d3.json(Earthquakes).then(function (data) {
         }
     }).addTo(earthquakes);
     //Then add the earthquake layer to our map.
+    // Added all the markers to earthquakes layer, then earthquakes layer to map
     earthquakes.addTo(map);
 });
 
