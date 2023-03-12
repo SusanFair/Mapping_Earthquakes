@@ -32,7 +32,7 @@ let sanFranAirport =
 //     // We turn each feature into a marker on the map.
 //     pointToLayer: function(feature, latlng) {
 //         return L.marker(latlng)
-//         .bindPopup("<h2>" + feature.properties.name + "<br>"  + feature.properties.city+", "+ feature.properties.country+ "</h2>");
+//         .bindPopup("<h2>" + feature.properties.name + "<hr>"   + feature.properties.city+", "+ feature.properties.country+ "</h2>");
 //        }
 // }).addTo(map);
 
@@ -42,7 +42,7 @@ L.geoJSON(sanFranAirport, {
     // We turn each feature into a marker on the map.
     onEachFeature: function(feature, layer) {
         console.log(layer);
-        layer.bindPopup("<h3>" + "Airport code: " + feature.properties.faa + "<br>"  + "Airport name: " +feature.properties.name + "</h3>");
+        layer.bindPopup("<h3>" + "Airport code: " + feature.properties.faa + "<hr>"  + "Airport name: " +feature.properties.name + "</h3>");
     }
 }).addTo(map);
 
