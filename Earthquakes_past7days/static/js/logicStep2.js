@@ -95,7 +95,7 @@ L.control.layers(baseMaps).addTo(map);
 // let torontoHoods = "https://raw.githubusercontent.com/SusanFair/Mapping_Earthquakes/main/torontoNeighborhoods.json";
 
 // Retrieve the earthquake GeoJSON data
-let Earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
+let Earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 // Alternate to adding the color and weight to the L.geoJSON, could set seperate myStyle
 // Create a style for the lines.
@@ -106,14 +106,36 @@ let Earthquakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all
 //     weight: 2
 // }
 
+// Module 14.6.2
 // This function determines the radius of the earthquake marker based on its magnitude.
 // Earthquakes with a magnitude of 0 will be plotted with a radius of 1.
 function getRadius(magnitude) {
     if (magnitude === 0) {
       return 1;
     }
-    return magnitude * 4;
+    return magnitude * 3;
   }
+
+// This function determines the color of the circle based on the magnitude of the earthquake.
+function getColor(magnitude) {
+    if (magnitude > 5) {
+      return "#ea2c2c";
+    }
+    if (magnitude > 4) {
+      return "#ea822c";
+    }
+    if (magnitude > 3) {
+      return "#ee9c00";
+    }
+    if (magnitude > 2) {
+      return "#eecc00";
+    }
+    if (magnitude > 1) {
+      return "#d4ee00";
+    }
+    return "#98ee00";
+  }
+
 
 // This function returns the style data for each of the earthquakes we plot on
 // the map. We pass the magnitude of the earthquake into a function
@@ -122,9 +144,9 @@ function styleInfo(feature) {
     return {
       opacity: 1,
       fillOpacity: 1,
-      fillColor: "#ffae42",
+      fillColor: getColor(feature.properties.mag),
       color: "#000000",
-      radius: getRadius(getRadius()),
+      radius: getRadius(feature.properties.mag),
       stroke: true,
       weight: 0.5
     };
@@ -138,9 +160,9 @@ d3.json(Earthquakes).then(function (data) {
             return L.circleMarker(latlng);
         },
         style: styleInfo,
-        // onEachFeature: function (features, layer) {
-        //     layer.bindPopup("<h3>" + "Airline: " + features.properties.airline + "</h3> <hr> <h4>Destination: " + features.properties.dst + "</h4>")
-        // }
+        onEachFeature: function (features, layer) {
+            layer.bindPopup("<h3>" + "Magnitude: " + features.properties.mag + "</h3> <hr> <h4>Location: " + features.properties.place + "</h4>")
+        }
     }).addTo(map);
 });
 
