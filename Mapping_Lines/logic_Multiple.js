@@ -2,21 +2,7 @@
 console.log("working");
 
 // Create the map object with a center and zoom level.
-let map = L.map('mapid').setView([37.6214, -122.3790], 5);
-
-// Lines
-// Coordinates for each point to be used in the line.
-let line = [
-    [33.9416, -118.4085],
-    [37.6214, -122.3790],
-    [40.7899, -111.9791],
-    [47.4502, -122.3088]
-  ];
-
-  // Create a polyline using the line coordinates and make the line red.
-L.polyline(line, {
-    color: "yellow"
-  }).addTo(map);
+let map = L.map('mapid').setView([34.0522, -118.2537], 4);
 
 // Single markers
 
@@ -54,17 +40,14 @@ cityData.forEach(function(city) {
     .addTo(map)
 });
 
-
 // We create the tile layer that will be the background of our map.
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     // Light background
-    //id: 'mapbox/streets-v11',
+    id: 'mapbox/streets-v11',
     // Dark background
     // id: 'mapbox/dark-v10',
-    // Satelite background
-    id: 'mapbox/satellite-streets-v12',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: API_KEY
@@ -72,7 +55,4 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
 
-
-
-//mapbox/satellite-streets-v11
 //https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/1/1/0?access_token=pk.eyJ1Ijoic2ZhaXItYW5hbHl0aWNzIiwiYSI6ImNsZXgyYjF0NDBoNWIzcG16aXRpcTNvN2cifQ.SHSYTI53_NqoPBHznn0dVw
