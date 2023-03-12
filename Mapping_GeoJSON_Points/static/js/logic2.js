@@ -1,7 +1,7 @@
-// Basic GeoJSON Module 14.5.2
+// Global multipoint GeoJSON Module 14.5.3
 
 // Create the map object with center at the San Francisco airport.
-let map = L.map('mapid').setView([37.5, -122.5], 10);
+let map = L.map('mapid').setView([30,30], 2);
 
 
 // Module 14.5.2
@@ -36,15 +36,15 @@ let sanFranAirport =
 //        }
 // }).addTo(map);
 
-// Grabbing our GeoJSON data.
-// Popup info using onEachFeature method
-L.geoJSON(sanFranAirport, {
-    // We turn each feature into a marker on the map.
-    onEachFeature: function(feature, layer) {
-        console.log(layer);
-        layer.bindPopup("<h3>" + "Airport code: " + feature.properties.faa + "<br>"  + "Airport name: " +feature.properties.name + "</h3>");
-    }
-}).addTo(map);
+// // Grabbing our GeoJSON data.
+// // Popup info using onEachFeature method
+// L.geoJSON(sanFranAirport, {
+//     // We turn each feature into a marker on the map.
+//     onEachFeature: function(feature, layer) {
+//         console.log(layer);
+//         layer.bindPopup("<h3>" + "Airport code: " + feature.properties.faa + "<br>"  + "Airport name: " +feature.properties.name + "</h3>");
+//     }
+// }).addTo(map);
 
 
 
@@ -64,3 +64,18 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
     accessToken: API_KEY
 });
 streets.addTo(map);
+
+// Accessing the airport GeoJSON URL from my GitHub
+let airportData = "https://raw.githubusercontent.com/SusanFair/Mapping_Earthquakes/main/majorAirports.json";
+
+
+// Grabbing our GeoJSON data.
+// Popup info using GeoJson date from URL
+d3.json(airportData).then(function(data) {
+    console.log(data);
+    L.geoJSON(data, {
+        onEachFeature: function(features, layer){
+        layer.bindPopup("<h3>" +"Airport code: "+ features.properties.faa + "</h3> <hr> <h4>Airport Name: " + features.properties.name + "</h4>")
+      }
+    }).addTo(map);
+});
