@@ -22,10 +22,22 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/
   accessToken: API_KEY
 });
 
+// Deliverable 3: Add an Additional Map
+let dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  // Outdoors
+  id: 'mapbox/dark-v10',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: API_KEY
+});
+
 // Create a base layer that holds both maps.
 let baseMaps = {
   Street: streets,
-  Satellite: satelliteStreets
+  Satellite: satelliteStreets,
+  Dark: dark
 };
 
 // Creat the map object with center, zoom level and default layer.
@@ -64,7 +76,7 @@ function getRadius(magnitude) {
   if (magnitude === 0) {
     return 1;
   }
-  return magnitude * 3;
+  return magnitude * 2;
 }
 
 // This function determines the color of the circle based on the magnitude of the earthquake.
@@ -121,7 +133,7 @@ d3.json(Earthquakes).then(function (data) {
 
 // Create a legend control object.
 let legend = L.control({
-  position: "bottomright"
+  position: "bottomright",
 });
 
 // Then add all the details for the legend.
@@ -218,7 +230,7 @@ d3.json(majorEarthquakeData).then(function (data) {
     },
     style: styleInfoMajor,
         onEachFeature: function (features, layer) {
-        layer.bindPopup("<h3>" + "MajorMagnitude: " + features.properties.mag + "</h3> <hr> <h4>Location: " + features.properties.place + "</h4>")
+        layer.bindPopup("<h3>" + "Magnitude-Major: " + features.properties.mag + "</h3> <hr> <h4>Location: " + features.properties.place + "</h4>")
     }
     // 8. Add the major earthquakes layer to the map.
   }).addTo(majorEarthquakes);

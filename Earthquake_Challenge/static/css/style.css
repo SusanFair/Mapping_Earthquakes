@@ -21,3 +21,7 @@ body,
   margin-right: 8px;
   opacity: 0.7;
 }
+
+.leaflet-control-layers-expanded { color: #e28317;}
+
+//.leaflet-control-layers-expanded { background: #e79f18; }
