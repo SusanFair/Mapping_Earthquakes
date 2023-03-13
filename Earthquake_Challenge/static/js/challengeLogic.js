@@ -30,7 +30,9 @@ let baseMaps = {
 
 // Creat the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
+  // Changed center to better display major earthquakes globally
   center: [40.7, -94.5],
+  //center: [14.4974, -14.4524],
   zoom: 3,
   layers: [streets]
 });
@@ -62,7 +64,7 @@ function getRadius(magnitude) {
   if (magnitude === 0) {
     return 1;
   }
-  return magnitude * 4;
+  return magnitude * 3;
 }
 
 // This function determines the color of the circle based on the magnitude of the earthquake.
@@ -173,16 +175,16 @@ d3.json(tecktonicPlateData).then(function (data) {
 // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
 function getColorMajor(magnitude) {
   if (magnitude >= 6) {
-    return "#ea2c2c";
+    return "#ff0000";
   }
   if (magnitude > 5) {
-    return "#ea822c";
+    return "#ff751a";
   }
   return "#98ee00";
 }
 
 // 6. Use the function that determines the radius of the earthquake marker based on its magnitude.
-function getRadius(magnitude) {
+function getRadiusMajor(magnitude) {
   if (magnitude >= 6) {
     return magnitude * 5;
   }
@@ -199,7 +201,7 @@ function styleInfoMajor(feature) {
     fillOpacity: 1,
     fillColor: getColorMajor(feature.properties.mag),
     color: "#000000",
-    radius: getRadius(feature.properties.mag),
+    radius: getRadiusMajor(feature.properties.mag),
     stroke: true,
     weight: 0.5
   };
@@ -216,7 +218,7 @@ d3.json(majorEarthquakeData).then(function (data) {
     },
     style: styleInfoMajor,
         onEachFeature: function (features, layer) {
-        layer.bindPopup("<h3>" + "Magnitude: " + features.properties.mag + "</h3> <hr> <h4>Location: " + features.properties.place + "</h4>")
+        layer.bindPopup("<h3>" + "MajorMagnitude: " + features.properties.mag + "</h3> <hr> <h4>Location: " + features.properties.place + "</h4>")
     }
     // 8. Add the major earthquakes layer to the map.
   }).addTo(majorEarthquakes);
