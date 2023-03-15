@@ -1,15 +1,13 @@
-# Mapping_Earthquakes
-Module 14 -  Mapping with JS and APIs
+# Mapping Earthquakes
 
+## Overview of Project
+This project was a exercise in GeoJSON mapping using live data to drive real world geographical maps.  The data supplied provided information on recent earthquakes and major earthquakes magnitude 4.5 and higher over the last week.  
 
+## Results
+The results are a multi-layered map.  Since tectonic plates are known to be high impact areas for earthquakes these were added to the map for reference.  Three map layers Street view, Satellite view, and a dark or night view are available through the layers icon on the top right of the screen.  Earthquake types and the tectonic plates can be removed or added via the same layer icon using the check boxes.
 
-Purpose
-The purpose of this project is to visually show the differences between the magnitudes of earthquakes all over the world for the last seven days.
+Using madnitude data to drive the radius and color you can cleary see the difference between the magnitudes of the earthquakes.  Also the pop up information will identiy if the earth quake came from the overall earthquake data or the Major Earthquake data for the last week.  These will be shown as "Magnitude-Major" and have a slightly deeper color scheme.
+  - pic
 
-Tasks
-To complete this project, use a URL for GeoJSON earthquake data from the USGS website and retrieve geographical coordinates and the magnitudes of earthquakes for the last seven days. Then add the data to a map.
-
-Approach
-Your approach will be to use the JavaScript and the D3.js library to retrieve the coordinates and magnitudes of the earthquakes from the GeoJSON data. You'll use the Leaflet library to plot the data on a Mapbox map through an API request and create interactivity for the earthquake data.
-
-Now that you have an overview of the project plan, let's set up a Mapbox account and get the API token you'll need to create geographical maps.
+## Summary
+The Geo mapping of earthquake data clearly shows the association between tectonic plates and prevelance of earthquake events.  It also shows in an efficient manner the scale of the earthquakes in the various areas around the globe.
