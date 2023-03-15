@@ -8,7 +8,7 @@ The result isa multi-layered map with plenty of detail.  Since tectonic plates a
 
 Using magnitude data to drive the radius and color of the earthquake events you can cleary see the difference between the various magnitudes of the earthquakes.  Also the pop up information will identiy if the earth quake came from the overall earthquake data or the Major Earthquake data for the last week.  These will be shown as "Magnitude-Major" and have a slightly deeper color scheme.
 
-    ![Major Earthquakes](https://github.com/SusanFair/Mapping_Earthquakes/blob/main/Earthquake_Challenge/static/resources/Major.PNG)
+![Major Earthquakes](https://github.com/SusanFair/Mapping_Earthquakes/blob/main/Earthquake_Challenge/static/resources/Major.PNG)
 
 ## Summary
 The Geo mapping of earthquake data clearly shows the association between tectonic plates and the prevelance of earthquake events.  It also shows in an efficient manner the scale of the earthquakes in the various areas around the globe.
